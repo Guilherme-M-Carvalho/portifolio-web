@@ -1,0 +1,28 @@
+.example-sidenav {
+    border: none;
+    min-width: 200px;
+}
+
+.sidenav-content{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.sidenav-content-body{
+    padding: 4px 8px;
+    width: 100%;
+
+}
+
+.divider-nav{
+    cursor: pointer;
+    border-width: 2px !important;
+    border-color: red !important;
+}
+
+.divider-nav:hover{
+    cursor: pointer;
+    border-width: 2px !important;
+    border-color: green !important;
+}
