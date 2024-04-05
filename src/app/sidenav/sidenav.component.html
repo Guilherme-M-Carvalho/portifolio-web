@@ -1,18 +1,13 @@
-<div>aaa</div>
-
-<mat-drawer #drawer class="example-sidenav" [style]="'width:'+width+ 'px !important'" mode="side">
-    <div class="sidenav-content">
-        <div class="sidenav-content-body">
-            <p>Auto-resizing sidenav</p>
-            @if (showFiller) {
-            <p>Lorem, ipsum dolor sit amet consectetur.</p>
-            }
-            <button (click)="showFiller = !showFiller" mat-raised-button>
-                Toggle extra text
-            </button>
-        </div>
-
-        <mat-divider (drag)="handleDrag($event)" class="divider-nav" [draggable]="drawerOpen"  [vertical]="true"></mat-divider>
+<div class="sidenav-content">
+    <div class="sidenav-content-body">
+        <app-tree-code></app-tree-code>
+        <!-- <p>Auto-resizing sidenav</p>
+        @if (showFiller) {
+        <p>Lorem, ipsum dolor sit amet consectetur.</p>
+        }
+        <button (click)="showFiller = !showFiller" mat-raised-button>
+            Toggle extra text
+        </button> -->
     </div>
-
-</mat-drawer>
+    <mat-divider (dragend)="handleDrag($event)" class="divider-nav" [draggable]="true"  [vertical]="true"></mat-divider>
+</div>

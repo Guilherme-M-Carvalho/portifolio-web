@@ -1,0 +1,31 @@
+.sidenav-icons {
+    position: absolute;
+    top: var(--height-header);
+    width: var(--width-nav-icons);
+    height: calc(100% - var(--height-footer) - var(--height-header));
+    background-color: var(--primary);
+    border-right-color: var(--divider);
+    border-right-width: var(--border-width-divider);
+    border-right-style: solid;
+}
+
+mat-icon{
+    margin: 0px !important;
+    justify-self: center !important;
+    color: var(--color-icon) !important;
+}
+mat-icon:hover{
+    color: var(--color-icon-active) !important;
+}
+
+mat-list-item{
+    cursor: pointer !important;
+    border-left: 2px solid var(--tretiary);
+    height: 40px !important;
+    display: grid !important;
+    justify-content: center !important;
+}
+
+mat-list-item{
+    padding: 0px;
+}

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BodyComponent } from './body.component';
+import { SidenavIconsComponent } from './sidenav-icons.component';
 
-describe('BodyComponent', () => {
-  let component: BodyComponent;
-  let fixture: ComponentFixture<BodyComponent>;
+describe('SidenavIconsComponent', () => {
+  let component: SidenavIconsComponent;
+  let fixture: ComponentFixture<SidenavIconsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BodyComponent]
+      imports: [SidenavIconsComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(BodyComponent);
+    fixture = TestBed.createComponent(SidenavIconsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

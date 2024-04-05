@@ -1,0 +1,25 @@
+.button-accordion {
+  padding: 2px;
+  background: transparent;
+  border: none;
+
+  mat-icon {
+    font-size: 14px;
+    height: 14px;
+    width: 14px;
+  }
+}
+
+mat-tree {
+  background: transparent;
+}
+
+mat-tree-node {
+  font-size: 10.5px;
+  min-height: 20px;
+  cursor: pointer;
+}
+
+mat-tree-node:hover {
+  background: var(--tretiary-opacity);
+}

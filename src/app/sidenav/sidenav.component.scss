@@ -1,28 +1,24 @@
-.example-sidenav {
-    border: none;
-    min-width: 200px;
-}
-
-.sidenav-content{
+.sidenav-content {
     display: flex;
     height: 100%;
     width: 100%;
+    background-color: var(--primary);
 }
 
-.sidenav-content-body{
-    padding: 4px 8px;
+.sidenav-content-body {
     width: 100%;
-
 }
 
-.divider-nav{
-    cursor: pointer;
-    border-width: 2px !important;
-    border-color: red !important;
+.divider-nav {
+    cursor: e-resize;
+    border-width: var(--border-width-divider) !important;
+    border-color: var(--divider) !important;
+    height: 100%;
+    z-index: 100;
+    transition: all .2s ease-in-out;
 }
 
-.divider-nav:hover{
-    cursor: pointer;
-    border-width: 2px !important;
-    border-color: green !important;
+.divider-nav:hover {
+    border-width: var(--border-width-divider-hover) !important;
+    border-color: var(--tretiary) !important;
 }

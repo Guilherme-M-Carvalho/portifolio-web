@@ -1,43 +1,45 @@
-import { Component, Output, ViewChild, EventEmitter } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
+import { TreeCodeComponent } from './tree-code/tree-code.component';
 
 @Component({
   selector: 'app-sidenav',
   standalone: true,
-  imports: [MatSidenavModule, MatButtonModule, MatDividerModule],
+  imports: [
+    TreeCodeComponent,
+    MatDividerModule
+  ],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss'
 })
 export class SidenavComponent {
 
-  @ViewChild('drawer') public drawer: any
-  public drawerOpen: boolean = false;
   public showFiller: boolean = false;
-  public width: number = 200
 
-  handleToggleNav() {
-    this.drawer.toggle()
-    if (this.drawer._opened) {
-      this.width = 200
-    }
-    this.drawerOpen = this.drawer._opened
-    console.log(this.drawerOpen);
+  @Output() public changeWidthAside: EventEmitter<number> = new EventEmitter()
+  @Output() public disableMenuAside: EventEmitter<boolean | undefined> = new EventEmitter()
 
-  }
+  public width: number = 140
+
 
   handleDrag(event: DragEvent) {
-    const offsetx = event.offsetX
-    if (offsetx > 0) {
-      this.width += Math.abs(offsetx)
+
+    const pageX = Math.round(event.pageX)
+    const positionX = Math.round((<any>event.target)?.getBoundingClientRect()?.x)
+    const offsetX = Math.round(pageX > positionX ? (pageX - positionX) : -(positionX -pageX))
+
+    if (offsetX > 0) {
+      this.width += Math.abs(offsetX)
     } else {
-      this.width -= Math.abs(offsetx)
+      this.width -= Math.abs(offsetX)
     }
-    if (this.width < 200) {
-      this.width = 200
-    } else if (this.width > (window.innerWidth - 200)) {
-      this.width = (window.innerWidth - 200)
+    if (this.width < 140) {
+      this.width = 140
+      this.disableMenuAside.emit(false)
+    } else if (this.width > (window.innerWidth - 140)) {
+      this.width = (window.innerWidth - 140)
     }
+    this.changeWidthAside.emit(this.width)
   }
+
 }
