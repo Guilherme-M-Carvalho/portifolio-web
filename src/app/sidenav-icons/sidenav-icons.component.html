@@ -1,8 +1,10 @@
 <aside class="sidenav-icons">
     <mat-list>
-        <mat-list-item>
-            <mat-icon>folder</mat-icon>
+        @for (mod of modules; track $index) {
+        <mat-list-item routerLinkActive="active-icon" (click)="changeMenu($index)" [routerLink]="mod.route">
+            <mat-icon>{{ mod.icon }}</mat-icon>
         </mat-list-item>
+        }
     </mat-list>
 </aside>
 <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon> -->

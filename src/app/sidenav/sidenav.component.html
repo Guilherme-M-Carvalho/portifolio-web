@@ -1,6 +1,7 @@
-<div class="sidenav-content">
-    <div class="sidenav-content-body">
-        <app-tree-code></app-tree-code>
+<div class="sidenav-content" [style]="'display: flex;flex-direction: row;width:'+(width)+ 'px !important'">
+    <div class="sidenav-content-body" [style]="'width:'+(width - 2)+ 'px !important'">
+        <!-- <app-tree-code></app-tree-code> -->
+        <router-outlet></router-outlet>
         <!-- <p>Auto-resizing sidenav</p>
         @if (showFiller) {
         <p>Lorem, ipsum dolor sit amet consectetur.</p>

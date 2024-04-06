@@ -1,12 +1,12 @@
 <mat-toolbar class="example-header">Header</mat-toolbar>
-<app-sidenav-icons></app-sidenav-icons>
-<mat-sidenav-container class="example-container" (dragover)="handleDragOver($event)" color="primary" >
-  <mat-sidenav (dragover)="handleDragOver($event)" #sidenav mode="side" opened class="example-sidenav" [fixedInViewport]="false"  [style]="'width:'+width+ 'px !important'">
-    <app-sidenav (changeWidthAside)="changeWidthAside($event)" (disableMenuAside)="disableMenuAside()" ></app-sidenav>
+<app-sidenav-icons (disableMenuAside)="disableMenuAside()"></app-sidenav-icons>
+<mat-sidenav-container class="example-container" (dragover)="handleDragOver($event)" color="primary">
+  <mat-sidenav (dragover)="handleDragOver($event)" #sidenav mode="side" opened class="example-sidenav"
+    [fixedInViewport]="false" [style]="'width:'+width+ 'px !important'">
+    <app-sidenav (changeWidthAside)="changeWidthAside($event)" (disableMenuAside)="disableMenuAside()"></app-sidenav>
   </mat-sidenav>
-  <mat-sidenav-content class="sidenav-content"  [style]="'margin-left:'+(menuVisible ? width : 0)+ 'px !important'">
-    <p><button mat-button (click)="toogleMenu()">Toggle</button></p>
-    <router-outlet></router-outlet>
+  <mat-sidenav-content class="sidenav-content" [style]="'margin-left:'+(menuVisible ? width : 0)+ 'px !important'">
+    <app-tabs></app-tabs>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

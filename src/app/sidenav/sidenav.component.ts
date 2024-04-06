@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { TreeCodeComponent } from './tree-code/tree-code.component';
-
+import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-sidenav',
   standalone: true,
   imports: [
+    RouterOutlet,
     TreeCodeComponent,
     MatDividerModule
   ],

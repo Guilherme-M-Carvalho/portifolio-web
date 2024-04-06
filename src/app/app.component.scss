@@ -6,13 +6,22 @@
     right: 0;
 }
 
+mat-sidenav-container{
+    background: transparent !important;
+}
+
 .example-sidenav {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 140px;
     border: none !important;
+    background: transparent;
 
+}
+
+.mat-drawer-inner-container{
+    overflow: hidden !important;
 }
 
 .example-header {
@@ -25,6 +34,7 @@
     border-bottom-color: var(--divider);
     border-bottom-width: var(--border-width-divider);
     border-bottom-style: solid;
+    background: var(--primary) !important;
 }
 
 .example-footer {
@@ -45,4 +55,5 @@
 .sidenav-content {
     display: flex;
     background: var(--secondary);
+    flex-direction: column;
 }

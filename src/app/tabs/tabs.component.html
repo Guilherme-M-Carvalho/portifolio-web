@@ -1,0 +1,11 @@
+<mat-tab-group  animationDuration="0ms">
+  @for (item of fileService.files; track $index) {
+    <mat-tab>
+      <ng-template mat-tab-label>
+        {{ item.name }}
+        <mat-icon class="icon-close">close</mat-icon>
+      </ng-template>
+      Content 1
+    </mat-tab>
+  }
+  </mat-tab-group>

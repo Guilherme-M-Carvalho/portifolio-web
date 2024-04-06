@@ -12,6 +12,10 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 
+.mat-drawer-inner-container{
+  overflow: hidden !important;
+}
+
 :root {
   --primary: #181818;
   --divider: #2b2b2b;
@@ -21,6 +25,11 @@
   --tera: #030302;
   --dark: #000000;
   --grey: #919191;
+  --icon-brown: #D06D24;
+  --icon-yellow: #CBCB41;
+  --icon-blue: #1D4E86;
+  --icon-pink: #B24367;
+  --icon-gray: #6D8086;
   --light: #dddddd;
   --white: #FFFFFF;
   --border-width-divider: 2px;
@@ -34,6 +43,22 @@
   --text-color-active: #d7d7d7;
 }
 
+
+.icon-brown{
+  color: var(--icon-brown) !important;
+}
+.icon-gray{
+  color: var(--icon-gray) !important;
+}
+.icon-blue{
+  color: var(--icon-blue) !important;
+}
+.icon-pink{
+  color: var(--icon-pink) !important;
+}
+.icon-yellow{
+  color: var(--icon-yellow) !important;
+}
 
 $web-primary: mat.define-palette(mat.$indigo-palette);
 $web-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);

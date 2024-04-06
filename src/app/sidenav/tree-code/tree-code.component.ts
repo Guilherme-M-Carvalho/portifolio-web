@@ -1,61 +1,40 @@
-import {FlatTreeControl} from '@angular/cdk/tree';
-import {Component} from '@angular/core';
-import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/material/tree';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { FlatTreeControl } from '@angular/cdk/tree';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule } from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { TreeModel } from '../../shared/tree.model';
+import { TREE_CODE } from '../../shared/mock/tree-code-mock';
+import { FileService } from '../../file.service';
+import { LineType } from '../../shared/file.model';
 
-interface FoodNode {
-  name: string;
-  icon: string
-  children?: FoodNode[];
-}
-
-const TREE_DATA: FoodNode[] = [
-  {
-    icon: "folder",
-    name: 'src',
-    children: [{icon: "home", name: 'Apple'}, {icon: "home", name: 'Banana'}, {icon: "home", name: 'Fruit loops'}],
-  },
-  {
-    icon: "home", name: 'Vegetables',
-    children: [
-      {
-        icon: "home", name: 'Green',
-        children: [{icon: "home", name: 'Broccoli'}, {icon: "home", name: 'Brussels sprouts'}],
-      },
-      {
-        icon: "home", name: 'Orange',
-        children: [{icon: "home", name: 'Pumpkins'}, {icon: "home", name: 'Carrots',
-          children:[      {
-            icon: "home", name: 'Orange',
-            children: [{icon: "home", name: 'Pumpkins'}, {icon: "home", name: 'Carrots'}],
-          }]
-        }],
-      },
-    ],
-  },
-];
 interface ExampleFlatNode {
   expandable: boolean;
-  icon: string;
+  icon?: string;
+  color?: string;
   name: string;
+  lines: LineType[];
   level: number;
 }
 @Component({
   selector: 'app-tree-code',
   standalone: true,
-  imports: [MatTreeModule, MatButtonModule, MatIconModule],
+  imports: [MatTreeModule, MatButtonModule, MatIconModule, MatDividerModule],
   templateUrl: './tree-code.component.html',
   styleUrl: './tree-code.component.scss'
 })
-export class TreeCodeComponent {
-  private _transformer = (node: FoodNode, level: number) => {
-    return {
+export class TreeCodeComponent implements OnChanges {
+  private _transformer = (node: TreeModel, level: number) => {
+    const res: ExampleFlatNode = {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
+      color: node.color,
       icon: node.icon,
+      lines: node.lines,
       level: level,
     };
+    return res
   };
 
   treeControl = new FlatTreeControl<ExampleFlatNode>(
@@ -72,9 +51,26 @@ export class TreeCodeComponent {
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  constructor() {
-    this.dataSource.data = TREE_DATA;
+  constructor(private fileService: FileService) {
+    this.dataSource.data = TREE_CODE;
+  }
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    
   }
 
-  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+  handleFile(file:string, lines: LineType[]) {
+    console.log(this.fileService);
+    
+  }
+
+  hasChild = (_: number, node: ExampleFlatNode) => {
+    return node.expandable
+  };
+
+
+  transformJson(json: any) {
+    return JSON.stringify(json)
+  }
 }

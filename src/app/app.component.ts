@@ -5,6 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SidenavIconsComponent } from './sidenav-icons/sidenav-icons.component';
+import { TabsComponent } from './tabs/tabs.component';
+import { FileService } from './file.service';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +18,7 @@ import { SidenavIconsComponent } from './sidenav-icons/sidenav-icons.component';
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
+    TabsComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -26,6 +29,10 @@ export class AppComponent {
   @ViewChild('sidenav') public sidenav: any
   public width: number = 140
   public menuVisible: boolean = true
+
+  constructor(
+    public fileService: FileService
+  ){}
 
   handleDragOver(event: any) {
     event.dataTransfer.dropEffect = "hovered";

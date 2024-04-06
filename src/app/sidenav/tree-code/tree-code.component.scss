@@ -2,22 +2,51 @@
   padding: 2px;
   background: transparent;
   border: none;
-
-  mat-icon {
-    font-size: 14px;
-    height: 14px;
-    width: 14px;
-  }
+  cursor: pointer;
 }
 
 mat-tree {
   background: transparent;
+  position: relative;
+  overflow: hidden;
 }
+
 
 mat-tree-node {
   font-size: 10.5px;
   min-height: 20px;
+  display: flex;
+  width: 100%;
+  align-items: center;
   cursor: pointer;
+  
+  span{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; 
+    padding-right: 4px;
+  }
+
+  mat-icon {
+    font-size: 14px;
+    height: fit-content;
+    width: fit-content;
+  }
+
+  mat-icon.toggle-icon {
+    font-size: 18px;
+    height: fit-content;
+    width: fit-content;
+    font-weight: 400;
+  }
+
+  mat-divider{
+    position: absolute;
+    top: 0;
+    border-width: 2px;
+    border-color: var(--divider);
+    height: 100px;
+  }
 }
 
 mat-tree-node:hover {

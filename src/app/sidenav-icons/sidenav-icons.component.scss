@@ -20,10 +20,17 @@ mat-icon:hover{
 
 mat-list-item{
     cursor: pointer !important;
-    border-left: 2px solid var(--tretiary);
     height: 40px !important;
     display: grid !important;
     justify-content: center !important;
+}
+
+mat-list-item.active-icon{
+    border-left: 2px solid var(--tretiary);
+    
+    mat-icon{
+        color: var(--color-icon-active) !important;
+    }
 }
 
 mat-list-item{

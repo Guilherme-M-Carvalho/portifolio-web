@@ -1,16 +1,26 @@
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
   <!-- This is the tree node template for leaf nodes -->
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+  <mat-tree-node (click)="handleFile(node.name, node.lines)" *matTreeNodeDef="let node" matTreeNodePadding [style]="'padding-left:'+node.level*10+'px !important'">
     <!-- <button mat-icon-button disabled></button> -->
-    {{node.name}}
+    <button class="button-accordion" [attr.aria-label]="'Toggle ' + node.name">
+      <mat-icon [fontIcon]="node.icon ? node.icon : 'description'" class="{{node.color}}"></mat-icon>
+    </button>
+    <span>
+      {{node.name}}
+    </span>
+
   </mat-tree-node>
   <!-- This is the tree node template for expandable nodes -->
-  <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
-    <button class="button-accordion"  matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
-      <mat-icon class="mat-icon-rtl-mirror" fontSet="">
-        {{node.icon}}
+  <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
+    [style]="'padding-left:'+node.level*10+'px !important'">
+    <!-- <mat-divider [vertical]="true" [style]="'left:'+(node.level + 1)*5+'px !important'"></mat-divider> -->
+    <button class="button-accordion" [attr.aria-label]="'Toggle ' + node.name">
+      <mat-icon class="'mat-icon-rtl-mirror toggle-icon {{node.color}}">
+        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
       </mat-icon>
     </button>
-    {{node.name}}
+    <span>
+      {{ node.name }}
+    </span>
   </mat-tree-node>
 </mat-tree>
